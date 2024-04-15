@@ -1,0 +1,19 @@
+# crea un docker compose con un contenedor mongo
+version: '3.8'
+services:
+  mongodb:
+    image: mongo:5.0.2
+    container_name: mongodb
+    ports:
+      - "7017:27017"
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: root
+      MONGO_INITDB_ROOT_PASSWORD: example
+    volumes:
+      - mongodb_data:/data/db
+    networks:
+      - my_network
+volumes:
+  mongodb_data:
+networks:
+  my_network:
